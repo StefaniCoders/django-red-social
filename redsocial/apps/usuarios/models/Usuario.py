@@ -29,4 +29,4 @@ class Usuario(models.Model):
         return super(Usuario, self).save(*args, **kwargs)
     
     def __str__(self):
-        return f'{self.email} {self.nombre} {self.apellidos} {self.genero} {self.fecha_reg}'
+        return f'{self.email} {self.nombre} {self.apellidos} {self.genero}'

@@ -10,7 +10,7 @@ ESTADOS = [
 class SolicitudAmistad(models.Model):
     usuario1 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='solicitud_usuario1')
     usuario2 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='solicitud_usuario2')
-    estado   = models.TextField(choices=ESTADOS, default=0)
+    estado   = models.IntegerField(choices=ESTADOS, default=0)
     fecha    = models.DateTimeField(editable=False, null=False, auto_now_add=True)
 
     class Meta:

@@ -9,3 +9,6 @@ class Publicacion(models.Model):
 
     class Meta:
         ordering = ['usuario', 'fecha', 'descripcion']
+
+    def __str__(self) :
+        return f"{self.usuario.email} {self.fecha} {self.descripcion}"

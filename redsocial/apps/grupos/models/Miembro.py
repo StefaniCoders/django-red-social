@@ -19,4 +19,4 @@ class Miembro(models.Model):
         ordering = ['grupo', 'usuario', 'rol', 'fecha_entrada', 'fecha_ult_con']
 
     def __str__(self):
-        return f"Miembro de {self.grupo.nombre} - {self.usuario.username}"
+        return f"Miembro de {self.grupo.nombre} - {self.usuario.nombre} - {self.rol}"

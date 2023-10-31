@@ -7,4 +7,4 @@ class MiembrosSala(models.Model):
     usuario  = models.ForeignKey(Miembro, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Usuario {self.usuario} en Sala {self.num_sala.num_sala}"
+        return f"Usuario {self.usuario} en Sala {self.num_sala.id}"

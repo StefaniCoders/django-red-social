@@ -9,3 +9,6 @@ class Chat(models.Model):
 
     class Meta:
         ordering = ['usuario1', 'usuario2', 'fecha_inicio']
+
+    def __str__(self):
+        return f'{self.id} {self.usuario1.nombre} <-> {self.usuario2.nombre} '

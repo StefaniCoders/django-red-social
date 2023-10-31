@@ -9,3 +9,7 @@ class Grupo(models.Model):
 
     class Meta:
         ordering = ['nombre', 'fecha_crea', 'creador']
+
+    def __str__(self):
+        return f'{self.nombre} {self.fecha_crea} {self.creador}'
+    
