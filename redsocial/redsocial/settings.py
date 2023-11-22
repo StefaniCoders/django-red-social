@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+#import mongoengine
+#mongoengine.connect(db="redsocialdjango", host="127.0.0.1", username="root", password='')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_admin_logs',
     'apps.usuarios',
     'apps.amistad',
     'apps.publicaciones',
     'apps.chat',
     'apps.grupos',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
+
 
 
 
@@ -82,12 +86,29 @@ WSGI_APPLICATION = 'redsocial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+ #   'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+ #       'NAME': BASE_DIR / 'db.sqlite3',
+ #   }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'redsocialdjango_three',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'mongodb://127.0.0.1:27017/redsocialdjango_three'
+        }
     }
 }
+
+#import mongoengine
+#mongoengine.connect(host="mongodb://127.0.0.1:27017/redsocialdjango")
+
+
+
 
 
 # Password validation
