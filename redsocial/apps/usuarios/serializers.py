@@ -21,3 +21,16 @@ class SolicitudAmistadSerializer(serializers.Serializer):
     usuario2          = serializers.CharField()
     estado       = serializers.CharField()
     fecha       = serializers.CharField()
+
+
+class SalaGrupoSerializer(serializers.Serializer):    
+    id            = serializers.CharField()
+    grupo           = serializers.CharField()
+
+class MiembroGrupoSerializer(serializers.Serializer):    
+    id            = serializers.CharField()
+    grupo           = serializers.CharField()
+    usuario           = serializers.CharField()
+    fecha_entrada           = serializers.CharField()
+    rol           = serializers.CharField()
+    ultima_conexion           = serializers.CharField()

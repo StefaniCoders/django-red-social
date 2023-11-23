@@ -6,7 +6,7 @@ from django.conf import settings
 from rest_framework import generics
 from .models import Usuario
 from django.contrib.auth.models import User, Group
-from .serializers import GrupoSerializer, SolicitudGrupoSerializer, SolicitudAmistadSerializer
+from .serializers import GrupoSerializer, SolicitudGrupoSerializer, SolicitudAmistadSerializer, SalaGrupoSerializer, MiembroGrupoSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -16,21 +16,33 @@ dbname = client[settings.DB]
 def getGrupoAll():
 
     collection = dbname['grupos_grupo']
-    mascot_details = collection.find({})
+    grupos_grupo = collection.find({})
 
-    return mascot_details
+    return grupos_grupo
 
 def getSolicitudGrupoAll():
     collection = dbname['grupos_solicitudgrupo']
-    mascot_details = collection.find({})
+    grupos_solicitudgrupo = collection.find({})
 
-    return mascot_details
+    return grupos_solicitudgrupo
 
 def getSolicitudAmistadeAll():
     collection = dbname['amistad_solicitudamistad']
-    mascot_details = collection.find({})
+    amistad_solicitudamistad = collection.find({})
 
-    return mascot_details
+    return amistad_solicitudamistad
+
+def getSalaGrupoAll():
+    collection = dbname['grupos_salagrupo']
+    amistad_solicitudamistad = collection.find({})
+
+    return amistad_solicitudamistad
+
+def getMiembroGrupoAll():
+    collection = dbname['grupos_miembrogrupo']
+    amistad_solicitudamistad = collection.find({})
+
+    return amistad_solicitudamistad
 
 @api_view(['GET'])
 def obtener_grupos_view(request):
@@ -61,6 +73,28 @@ def obtener_solicitud_amistatd_view(request):
 
     # Serializas los objetos usando el serializador
     serialized_objetos = SolicitudAmistadSerializer(objetos, many=True).data
+
+    # Devuelves la respuesta
+    return Response(serialized_objetos)
+
+@api_view(['GET'])
+def obtener_sala_grupo_view(request):
+    # Llamas a la función que retorna el array de objetos
+    objetos = getSalaGrupoAll()
+
+    # Serializas los objetos usando el serializador
+    serialized_objetos = SalaGrupoSerializer(objetos, many=True).data
+
+    # Devuelves la respuesta
+    return Response(serialized_objetos)
+
+@api_view(['GET'])
+def obtener_miembro_grupo_view(request):
+    # Llamas a la función que retorna el array de objetos
+    objetos = getMiembroGrupoAll()
+
+    # Serializas los objetos usando el serializador
+    serialized_objetos = MiembroGrupoSerializer(objetos, many=True).data
 
     # Devuelves la respuesta
     return Response(serialized_objetos)

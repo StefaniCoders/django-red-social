@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'redsocial.wsgi.application'
  #   }
 #}
 
-DB = 'redsocialdjango_i'
+DB = 'redsocialdjango_k'
 
 DATABASES = {
     'default': {

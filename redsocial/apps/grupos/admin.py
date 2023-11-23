@@ -7,6 +7,8 @@ from .models.Miembro import Miembro
 from .models.MiembrosSala import MiembrosSala
 from .models.SalaChatGrupo import SalaChatGrupo
 from .models.SolicitudGrupo import SolicitudGrupo
+from .models.SalaGrupo import SalaGrupo
+from .models.MiembroGrupo import MiembroGrupo
 
 class GrupoAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'fecha_crea', 'creador']
@@ -40,5 +42,5 @@ admin.site.register(Grupo, GrupoAdmin)
 admin.site.register(MenChatSalaGrupo, MenChatSalaGrupoAdmin)
 admin.site.register(Miembro, MiembroAdmin)
 admin.site.register(MiembrosSala, MiembrosSalaAdmin)
-admin.site.register(SalaChatGrupo, SalaChatGrupoAdmin)
-admin.site.register(SolicitudGrupo, SolicitudGrupoAdmin)
+admin.site.register(SalaGrupo)
+admin.site.register(MiembroGrupo)
