@@ -93,13 +93,15 @@ WSGI_APPLICATION = 'redsocial.wsgi.application'
  #   }
 #}
 
+DB = 'redsocialdjango_i'
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'redsocialdjango_i',
+        'NAME': DB,
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb://127.0.0.1:27017/redsocialdjango_i'
+            'host': 'mongodb://127.0.0.1:27017/'+DB
         }
     }
 }

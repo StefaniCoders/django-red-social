@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import pymongo
+from django.conf import settings
 
 # Create your views here.
 from rest_framework import generics
@@ -9,25 +10,23 @@ from .serializers import GrupoSerializer, SolicitudGrupoSerializer, SolicitudAmi
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
+dbname = client[settings.DB]
+
 def getGrupoAll():
-    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
-    dbname = client['redsocialdjango_i']
+
     collection = dbname['grupos_grupo']
     mascot_details = collection.find({})
 
     return mascot_details
 
 def getSolicitudGrupoAll():
-    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
-    dbname = client['redsocialdjango_i']
     collection = dbname['grupos_solicitudgrupo']
     mascot_details = collection.find({})
 
     return mascot_details
 
 def getSolicitudAmistadeAll():
-    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
-    dbname = client['redsocialdjango_i']
     collection = dbname['amistad_solicitudamistad']
     mascot_details = collection.find({})
 
