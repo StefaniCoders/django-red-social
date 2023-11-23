@@ -8,8 +8,8 @@ ESTADOS = [
 ]
 
 class SolicitudAmistad(models.Model):
-    usuario1 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='solicitud_usuario1')
-    usuario2 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='solicitud_usuario2')
+    usuario1 = models.CharField(max_length=155)
+    usuario2 = models.CharField(max_length=155)
     estado   = models.IntegerField(choices=ESTADOS, default=0)
     fecha    = models.DateTimeField(editable=False, null=False, auto_now_add=True)
 

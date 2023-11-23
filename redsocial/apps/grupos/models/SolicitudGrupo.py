@@ -8,7 +8,7 @@ ESTADOS = [
 ]
 
 class SolicitudGrupo(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.CharField(max_length=155)
     estado  = models.IntegerField(choices=ESTADOS, default=0)
     fecha   = models.DateTimeField(editable=False, null=False, auto_now_add=True)
 

@@ -1,11 +1,67 @@
 from django.shortcuts import render
+import pymongo
 
 # Create your views here.
 from rest_framework import generics
-#from .models import Usuario
+from .models import Usuario
 from django.contrib.auth.models import User, Group
-from .serializers import UsuarioSerializer
+from .serializers import GrupoSerializer, SolicitudGrupoSerializer, SolicitudAmistadSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
-class ListaUsuarios(generics.ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UsuarioSerializer
+def getGrupoAll():
+    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
+    dbname = client['redsocialdjango_i']
+    collection = dbname['grupos_grupo']
+    mascot_details = collection.find({})
+
+    return mascot_details
+
+def getSolicitudGrupoAll():
+    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
+    dbname = client['redsocialdjango_i']
+    collection = dbname['grupos_solicitudgrupo']
+    mascot_details = collection.find({})
+
+    return mascot_details
+
+def getSolicitudAmistadeAll():
+    client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
+    dbname = client['redsocialdjango_i']
+    collection = dbname['amistad_solicitudamistad']
+    mascot_details = collection.find({})
+
+    return mascot_details
+
+@api_view(['GET'])
+def obtener_grupos_view(request):
+    # Llamas a la función que retorna el array de objetos
+    objetos = getGrupoAll()
+
+    # Serializas los objetos usando el serializador
+    serialized_objetos = GrupoSerializer(objetos, many=True).data
+
+    # Devuelves la respuesta
+    return Response(serialized_objetos)
+
+@api_view(['GET'])
+def obtener_solicitud_grupos_view(request):
+    # Llamas a la función que retorna el array de objetos
+    objetos = getSolicitudGrupoAll()
+
+    # Serializas los objetos usando el serializador
+    serialized_objetos = SolicitudGrupoSerializer(objetos, many=True).data
+
+    # Devuelves la respuesta
+    return Response(serialized_objetos)
+
+@api_view(['GET'])
+def obtener_solicitud_amistatd_view(request):
+    # Llamas a la función que retorna el array de objetos
+    objetos = getSolicitudAmistadeAll()
+
+    # Serializas los objetos usando el serializador
+    serialized_objetos = SolicitudAmistadSerializer(objetos, many=True).data
+
+    # Devuelves la respuesta
+    return Response(serialized_objetos)

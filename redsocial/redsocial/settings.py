@@ -96,18 +96,16 @@ WSGI_APPLICATION = 'redsocial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'redsocialdjango_three',
+        'NAME': 'redsocialdjango_i',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb://127.0.0.1:27017/redsocialdjango_three'
+            'host': 'mongodb://127.0.0.1:27017/redsocialdjango_i'
         }
     }
 }
 
 #import mongoengine
 #mongoengine.connect(host="mongodb://127.0.0.1:27017/redsocialdjango")
-
-
 
 
 

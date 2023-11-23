@@ -1,8 +1,22 @@
 from rest_framework import serializers
-#from .models import Usuario
+from .models import Usuario
 from django.contrib.auth.models import User
 
-class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['username', 'email']
+class GrupoSerializer(serializers.Serializer):    
+    id            = serializers.CharField()
+    creador           = serializers.CharField()
+    nombre          = serializers.CharField()
+    fecha_crea          = serializers.CharField()
+
+class SolicitudGrupoSerializer(serializers.Serializer):    
+    id            = serializers.CharField()
+    usuario           = serializers.CharField()
+    estado          = serializers.CharField()
+    fecha       = serializers.CharField()
+
+class SolicitudAmistadSerializer(serializers.Serializer):    
+    id            = serializers.CharField()
+    usuario1           = serializers.CharField()
+    usuario2          = serializers.CharField()
+    estado       = serializers.CharField()
+    fecha       = serializers.CharField()
