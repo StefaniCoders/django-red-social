@@ -11,6 +11,7 @@ class GrupoSerializer(serializers.Serializer):
 class SolicitudGrupoSerializer(serializers.Serializer):    
     id            = serializers.CharField()
     usuario           = serializers.CharField()
+    grupo           = serializers.CharField()
     estado          = serializers.CharField()
     fecha       = serializers.CharField()
 
